@@ -1,0 +1,20 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "HTMX to-do list";
+}
+
+<div class="text-center">
+    <div hx-trigger="items-changed from:body" hx-get="/home/progress" hx-target="#progress" hx-swap="outerHTML">
+        <partial name="_Progress" for="Progress" />
+    </div>
+    <h1 class="display-4 mb-3">HTMX todo list</h1>
+    <form>
+        <input type="text" name="item" id="item" placeholder="e.g. Mow the lawn" />
+        <button hx-post="/home/additem" hx-trigger="click" hx-target="#items" hx-swap="outerHTML">
+            Add item
+        </button>
+    </form>
+    <div class="todo-list-container mt-2">
+        <partial name="_Items" for="Items" />
+    </div>
+</div>

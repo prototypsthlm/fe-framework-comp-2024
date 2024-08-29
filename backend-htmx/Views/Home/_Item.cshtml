@@ -1,0 +1,13 @@
+@model ToDoListItem
+
+<li class="pt-1">
+  <label>
+    <input name="done" type="checkbox" checked="@Model.IsDone" hx-post="/home/toggleitem" hx-trigger="change"
+      hx-target="closest li" hx-swap="outerHTML" hx-vals='{"id": @Model.Id}' />
+    @Model.Description
+  </label>
+  <button hx-delete="/home/deleteitem" hx-trigger="click" hx-target="#items" hx-swap="outerHTML"
+    hx-vals='{"id": @Model.Id}'>
+    X
+  </button>
+</li>

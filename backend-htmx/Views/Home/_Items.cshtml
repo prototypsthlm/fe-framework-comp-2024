@@ -1,0 +1,8 @@
+@model List<ToDoListItem>
+
+<ul id="items" class="todo-list">
+  @foreach (var item in Model)
+  {
+    <partial name="_Item" model="item" />
+  }
+</ul>
